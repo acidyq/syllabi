@@ -79,7 +79,7 @@
       text-align: center;
       border-top: 1px solid var(--border-color);
     }
-    #theme-toggle, #api-key-change {
+    #theme-toggle {
       background: none;
       border: 1px solid var(--border-color);
       color: var(--text-color);
@@ -103,7 +103,7 @@
       padding: 0 10px;
       z-index: 150;
     }
-    #menu-btn, #chat-btn, #chat-close {
+    #menu-btn {
       background: none;
       border: none;
       color: var(--text-color);
@@ -119,10 +119,9 @@
       body.menu-open #menu { left: 0; }
     }
 
-    /* Main content area styled as chat bubbles */
+    /* Main Content (Syllabus as Chat Bubbles) */
     #content {
       margin-left: 260px;
-      margin-right: 300px;
       padding: 20px;
       margin-top: 50px;
     }
@@ -151,111 +150,6 @@
       padding: 2px 4px;
       border-radius: 4px;
     }
-
-    /* Chatbot Sidebar (Dockable) */
-    #chat {
-      position: fixed;
-      top: 0;
-      right: -300px;
-      bottom: 0;
-      width: 300px;
-      background: var(--bg-content);
-      color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      border-left: 1px solid var(--border-color);
-      z-index: 200;
-      transition: right 0.3s;
-    }
-    body.chat-open #chat { right: 0; }
-    #chat-header {
-      padding: 10px;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--bg-sidebar);
-    }
-    #chat-header span { font-size: 0.9em; }
-    #chat-messages {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-    #chat-input-area {
-      padding: 8px;
-      border-top: 1px solid var(--border-color);
-      background: var(--input-bg);
-      display: flex;
-      align-items: center;
-    }
-    #chat-input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: var(--text-color);
-      padding: 4px 6px;
-      resize: none;
-      font-family: inherit;
-    }
-    #chat-input:focus { outline: none; }
-    #send-btn {
-      background: none;
-      border: none;
-      color: var(--text-color);
-      cursor: pointer;
-      padding: 0 8px;
-    }
-    #send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-    /* API Key Modal */
-    #api-key-modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 300;
-    }
-    #api-key-modal {
-      background: var(--bg-content);
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 20px;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-      color: var(--text-color);
-    }
-    #api-key-modal input, #api-key-modal select {
-      width: 100%;
-      padding: 8px;
-      margin: 10px 0;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      background: var(--input-bg);
-      color: var(--text-color);
-    }
-    #api-key-modal button {
-      padding: 8px 16px;
-      background: var(--link-color);
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    #api-key-modal a { color: var(--link-color); }
-    #api-key-error {
-      color: #f00;
-      font-size: 0.9em;
-      margin-top: 8px;
-    }
   </style>
 </head>
 <body class="dark">
@@ -280,8 +174,6 @@
     </ul>
     <div class="sidebar-bottom">
       <button id="theme-toggle">Light mode 🌞</button>
-      <br/>
-      <button id="api-key-change">Change API Key</button>
     </div>
   </nav>
 
@@ -289,18 +181,16 @@
   <div id="topbar">
     <button id="menu-btn">☰</button>
     <span id="top-title">Python Syllabus</span>
-    <button id="chat-btn">🤖</button>
   </div>
 
-  <!-- Main Content (Syllabus as chat-style bubbles) -->
+  <!-- Main Content (Syllabus as Chat-Style Bubbles) -->
   <div id="content">
     <div id="introduction" class="message assistant">
       <h1>Mastering Python Programming – Interactive Syllabus</h1>
-      <p>Welcome to the <em>Mastering Python</em> interactive syllabus. This course is structured into weekly modules that will guide you from Python basics to advanced concepts using Google Colab for interactive coding. The syllabus is presented in a chat-like format, and you also have access to a built-in GPT‑4 (or GPT‑3.5‑turbo) assistant that can answer both Python-related and general questions.</p>
+      <p>Welcome to the <em>Mastering Python</em> interactive syllabus. This course is structured into weekly modules that will guide you from Python basics to advanced concepts using Google Colab for interactive coding. The syllabus is presented in a chat-like format to enhance your learning experience.</p>
       <ul>
         <li>Interactive coding via embedded Google Colab notebook links.</li>
-        <li>Built-in AI assistant with customizable model selection.</li>
-        <li>ChatGPT‑style UI with light/dark mode toggle.</li>
+        <li>ChatGPT‑style UI with a light/dark mode toggle.</li>
       </ul>
     </div>
 
@@ -310,8 +200,8 @@
       <ul>
         <li>Visit <a href="https://colab.research.google.com" target="_blank" rel="noopener noreferrer">colab.research.google.com</a> and sign in with your Google account.</li>
         <li>Create a new notebook via <strong>File &rarr; New Notebook</strong>.</li>
-        <li>Rename your notebook – it will be saved automatically in your Google Drive under the “Colab Notebooks” folder.</li>
-        <li>Write and run code cells (e.g., <code>print("Hello, Python!")</code>) to see output.</li>
+        <li>Rename your notebook – it will be saved automatically in your Google Drive under “Colab Notebooks”.</li>
+        <li>Write and run code cells (e.g., <code>print("Hello, Python!")</code>) to see the output.</li>
       </ul>
     </div>
 
@@ -394,7 +284,7 @@
 
     <div id="week9" class="message assistant">
       <h2>Week 9: Data Analysis with Pandas</h2>
-      <p><em>Overview:</em> Use pandas to load, manipulate, and analyze datasets. Learn to filter, group, and summarize data to extract insights.</p>
+      <p><em>Overview:</em> Use pandas to load, manipulate, and analyze datasets. Learn to filter, group, and summarize data to extract meaningful insights.</p>
       <ul>
         <li><strong>Pandas Basics:</strong> <a href="https://colab.research.google.com/github/mrArpanM/learn-python/blob/main/23_PandasIntro.ipynb" target="_blank" rel="noopener noreferrer">Colab Notebook</a></li>
         <li><strong>Filtering and Sorting:</strong> <a href="https://colab.research.google.com/github/mrArpanM/learn-python/blob/main/24_PandasFilteringSorting.ipynb" target="_blank" rel="noopener noreferrer">Colab Notebook</a></li>
@@ -404,7 +294,7 @@
 
     <div id="week10" class="message assistant">
       <h2>Week 10: Data Visualization</h2>
-      <p><em>Overview:</em> Learn to visualize data using libraries like matplotlib (and optionally seaborn) to create charts and graphs that reveal trends and insights.</p>
+      <p><em>Overview:</em> Learn to visualize data using libraries like matplotlib (and optionally seaborn) to create charts that reveal trends and insights.</p>
       <ul>
         <li><strong>Matplotlib Basics:</strong> <a href="https://colab.research.google.com/github/mrArpanM/learn-python/blob/main/26_MatplotlibBasics.ipynb" target="_blank" rel="noopener noreferrer">Colab Notebook</a></li>
         <li><strong>Common Chart Types:</strong> <a href="https://colab.research.google.com/github/mrArpanM/learn-python/blob/main/27_CommonCharts.ipynb" target="_blank" rel="noopener noreferrer">Colab Notebook</a></li>
@@ -433,221 +323,28 @@
     </div>
   </div>
 
-  <!-- Chatbot Sidebar -->
-  <aside id="chat">
-    <div id="chat-header">
-      <span>GPT‑4 Assistant</span>
-      <button id="chat-close">×</button>
-    </div>
-    <div id="chat-messages"></div>
-    <div id="chat-input-area">
-      <textarea id="chat-input" rows="1" placeholder="Ask me anything..."></textarea>
-      <button id="send-btn" disabled>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512">
-          <path fill="currentColor" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/>
-        </svg>
-      </button>
-    </div>
-  </aside>
-
-  <!-- Overlay for modals -->
-  <div id="overlay"></div>
-
-  <!-- API Key Modal -->
-  <div id="api-key-modal-overlay">
-    <div id="api-key-modal">
-      <h2>Enter Your OpenAI API Key</h2>
-      <p>You can find your API key at <a href="https://platform.openai.com/account/api-keys" target="_blank" rel="noopener noreferrer">OpenAI API Keys</a>.</p>
-      <input type="text" id="api-key-input" placeholder="sk-..." />
-      <label for="api-model-select">Select Model:</label>
-      <select id="api-model-select">
-        <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
-        <option value="gpt-4" selected>gpt-4</option>
-      </select>
-      <button id="api-key-save">Save API Key</button>
-      <div id="api-key-error"></div>
-    </div>
-  </div>
-
   <script>
-    // --- API Key & Model Handling ---
-    const apiKeyModalOverlay = document.getElementById('api-key-modal-overlay');
-    const apiKeyInput = document.getElementById('api-key-input');
-    const apiModelSelect = document.getElementById('api-model-select');
-    const apiKeySaveBtn = document.getElementById('api-key-save');
-    const apiKeyErrorDiv = document.getElementById('api-key-error');
-
-    function checkApiKey() {
-      const key = localStorage.getItem('openai_api_key');
-      if (!key) {
-        apiKeyModalOverlay.style.display = 'flex';
-      }
-    }
-
-    async function verifyApiKey(key, model) {
-      try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + key
-          },
-          body: JSON.stringify({
-            model: model,
-            messages: [{ role: 'system', content: 'ping' }],
-            stream: false,
-            temperature: 0.0
-          })
-        });
-        if(response.ok) {
-          return true;
-        } else {
-          const errData = await response.json();
-          throw new Error(errData.error.message || 'Invalid API Key or model not available');
-        }
-      } catch (err) {
-        throw err;
-      }
-    }
-
-    apiKeySaveBtn.addEventListener('click', async () => {
-      const key = apiKeyInput.value.trim();
-      const model = apiModelSelect.value;
-      if(!key) return;
-      apiKeyErrorDiv.textContent = 'Verifying...';
-      try {
-        await verifyApiKey(key, model);
-        localStorage.setItem('openai_api_key', key);
-        localStorage.setItem('openai_model', model);
-        apiKeyErrorDiv.textContent = '';
-        apiKeyModalOverlay.style.display = 'none';
-      } catch(err) {
-        apiKeyErrorDiv.textContent = 'Error: ' + err.message;
-      }
-    });
-
-    document.getElementById('api-key-change').addEventListener('click', () => {
-      apiKeyModalOverlay.style.display = 'flex';
-    });
-
-    // --- Chatbot Functionality ---
-    const chatBtn = document.getElementById('chat-btn');
-    const chatClose = document.getElementById('chat-close');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatInput = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
-
-    chatBtn.addEventListener('click', () => {
-      document.body.classList.add('chat-open');
-    });
-    chatClose.addEventListener('click', () => {
-      document.body.classList.remove('chat-open');
-    });
-    chatInput.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
-    chatInput.addEventListener('input', () => {
-      sendBtn.disabled = chatInput.value.trim().length === 0;
-    });
-    function addChatMessage(content, sender) {
-      const msgDiv = document.createElement('div');
-      msgDiv.classList.add('message', sender === 'user' ? 'user' : 'assistant');
-      msgDiv.textContent = content;
-      chatMessages.appendChild(msgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-    async function sendMessage() {
-      const key = localStorage.getItem('openai_api_key');
-      const model = localStorage.getItem('openai_model') || 'gpt-4';
-      if (!key) {
-        alert("Please enter your OpenAI API Key.");
-        apiKeyModalOverlay.style.display = 'flex';
-        return;
-      }
-      const userText = chatInput.value.trim();
-      if(!userText) return;
-      addChatMessage(userText, 'user');
-      chatInput.value = '';
-      sendBtn.disabled = true;
-      const assistantMsgDiv = document.createElement('div');
-      assistantMsgDiv.classList.add('message', 'assistant');
-      chatMessages.appendChild(assistantMsgDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + key
-          },
-          body: JSON.stringify({
-            model: model,
-            messages: [{ role: 'user', content: userText }],
-            stream: true,
-            temperature: 0.7
-          })
-        });
-        if(!response.ok) {
-          const errData = await response.json();
-          throw new Error(errData.error.message || 'API error');
-        }
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder();
-        let done = false;
-        let assistantText = '';
-        while(!done) {
-          const { value, done: doneReading } = await reader.read();
-          done = doneReading;
-          const chunkValue = decoder.decode(value);
-          const lines = chunkValue.split("\n").filter(line => line.trim() !== "");
-          for (let line of lines) {
-            if(line.startsWith("data:")) {
-              const data = line.replace(/^data:\s*/, "");
-              if(data === "[DONE]") {
-                done = true;
-                break;
-              }
-              try {
-                const parsed = JSON.parse(data);
-                const delta = parsed.choices[0].delta;
-                if(delta && delta.content) {
-                  assistantText += delta.content;
-                  assistantMsgDiv.textContent = assistantText;
-                  chatMessages.scrollTop = chatMessages.scrollHeight;
-                }
-              } catch (e) {
-                console.error("Error parsing stream chunk", e);
-              }
-            }
-          }
-        }
-      } catch(err) {
-        assistantMsgDiv.textContent = "Error: " + err.message;
-      } finally {
-        sendBtn.disabled = false;
-      }
-    }
-    sendBtn.addEventListener('click', sendMessage);
-
-    // --- Overlay for modals ---
+    // --- Sidebar and Topbar Functionality ---
+    const menuBtn = document.getElementById('menu-btn');
     const overlay = document.getElementById('overlay');
-    overlay.addEventListener('click', () => {
+    menuBtn && menuBtn.addEventListener('click', () => {
+      document.body.classList.add('menu-open');
+    });
+    overlay && overlay.addEventListener('click', () => {
       document.body.classList.remove('menu-open');
-      document.body.classList.remove('chat-open');
-      apiKeyModalOverlay.style.display = 'none';
     });
 
-    // --- Check API Key on load ---
-    function checkApiKeyOnLoad() {
-      const key = localStorage.getItem('openai_api_key');
-      if (!key) {
-        apiKeyModalOverlay.style.display = 'flex';
+    // --- Theme Toggle ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    themeToggleBtn.addEventListener('click', () => {
+      if(document.body.classList.contains('dark')) {
+        document.body.classList.replace('dark','light');
+        themeToggleBtn.textContent = 'Dark mode 🌙';
+      } else {
+        document.body.classList.replace('light','dark');
+        themeToggleBtn.textContent = 'Light mode 🌞';
       }
-    }
-    checkApiKeyOnLoad();
+    });
   </script>
 </body>
-</html></html>
+</html>
